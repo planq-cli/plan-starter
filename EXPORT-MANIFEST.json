@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "treeSha256": "0c98b33c009dcc177fb76f67ca799a78067d787a98030af8529eb549d2be5e7a",
+  "treeSha256": "4de44ba772d226ed6768ae6211db8ef6da6ab683459923bf3b7726092494056f",
   "files": [
     {
       "path": ".gitignore",
@@ -13,6 +13,11 @@
       "sha256": "d2ff12b4176e3318d31a54f12fc2a6c7104e52d0efdd13cbc87fc0dae6aa5155"
     },
     {
+      "path": "infra-migration.plan",
+      "mode": "100644",
+      "sha256": "a697c7aedd237e4527dbdb88f139d540a667e84f1706f8ac9be20147c756c04d"
+    },
+    {
       "path": "LICENSE",
       "mode": "100644",
       "sha256": "9542cc2a5b622894ac9e73e0e533c6fef7b1ec57460b8bd16ad200a4e233d1d9"
@@ -20,12 +25,12 @@
     {
       "path": "plan.manifest.json",
       "mode": "100644",
-      "sha256": "edd226014e46cc45994c85ee1de56b9f504e0a31ba95816240a9c62a6157f629"
+      "sha256": "2700ad84e7d720877385838149589353f03de025a77c78afb0978e4d29d91a0c"
     },
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "c7eba9a2959b4b252749a45d90fecc8ce75237a746a101dd25af8f34cd683756"
+      "sha256": "44fcb5fc677b793bcc12fb1f44d81ad54cf8544b24d650152bb7616d58ab859f"
     },
     {
       "path": "resources.plan",

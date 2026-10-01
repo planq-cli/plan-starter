@@ -1,7 +1,7 @@
 # PlanQ starter
 
 This repository is a ready-to-use [PlanQ](https://planq.dev/docs/) project
-template. It includes a small starter plan and a larger CRM example that share
+template. It includes a small starter plan and two larger examples that share
 one project resource catalog.
 
 ## Get started
@@ -18,16 +18,22 @@ planq project validate
 planq dev
 ```
 
-`planq dev` opens the starter plan first and also makes `crm-demo.plan`
-available in the entry switcher. To preview only the full example, run:
+`planq dev` opens the starter plan first and also makes `crm-demo.plan` and
+`infra-migration.plan` available in the entry switcher. To preview only one of
+the full examples, run:
 
 ```bash
 planq dev crm-demo.plan
+planq dev infra-migration.plan
 ```
 
-The preview is read-only. Edit `starter.plan`, `crm-demo.plan`, and
+The preview is read-only. Edit `starter.plan`, the example plans, and
 `resources.plan` in your repository, then run `planq project validate` again.
 No Node.js, Vite, or source checkout is required.
+
+`infra-migration.plan` includes unscheduled work, so `planq project validate`
+reports `dep/order-unresolved` warnings for it. The command still succeeds:
+constraints can exist before dates do.
 
 ## Use a coding agent
 
@@ -53,8 +59,11 @@ for the complete workflow.
 ## Project files
 
 - `starter.plan`: a small plan intended for editing.
-- `crm-demo.plan`: a complete example derived from PlanQ's canonical demo.
-- `resources.plan`: the shared mock people catalog for both entries.
+- `crm-demo.plan`: a complete multi-phase delivery example derived from PlanQ's
+  canonical demo.
+- `infra-migration.plan`: a cross-team infrastructure migration example derived
+  from PlanQ's canonical example.
+- `resources.plan`: the shared mock people catalog for every entry.
 - `plan.manifest.json`: the ordered project entry list.
 
 ## License

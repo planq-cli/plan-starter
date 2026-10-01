@@ -1,0 +1,212 @@
+{
+  :id infra-migration-2026
+  :version 1.0
+  :title "2026 基础设施迁移计划"
+  :description `
+    跨团队的基础设施迁移：数据库、应用与网络分阶段切换，
+    最终统一验收。计划变更需经负责人确认。
+  `
+  :items [
+    {
+      :id discovery
+      :task 现状梳理
+      :items [
+        {
+          :id inventory
+          :task 资产盘点
+          :start 2026-02-02
+          :end 2026-02-06
+        }
+        {
+          :id dependency-map
+          :task 依赖梳理
+          :start 2026-02-09
+          :end 2026-02-13
+          :after [@inventory]
+        }
+        {
+          :id discovery-done
+          :milestone 梳理完成
+          :date 2026-02-13
+          :after [@dependency-map]
+        }
+      ]
+    }
+    {
+      :id database
+      :task 数据库迁移
+      :items [
+        {
+          :id db-prepare
+          :task 迁移准备
+          :start 2026-02-16
+          :end 2026-02-20
+          :after [@discovery-done]
+        }
+        {
+          :id db-review
+          :task 评审迁移方案
+          :deadline 2026-02-24
+          :after [@db-prepare]
+        }
+        {
+          :id db-dry-run
+          :task 预演迁移
+          :start 2026-02-25
+          :end 2026-02-27
+          :after [@db-review]
+        }
+        {
+          :id db-migrate
+          :task 执行迁移
+          :start 2026-03-02
+          :end 2026-03-06
+          :deadline 2026-03-09
+          :after [@db-dry-run]
+        }
+        {
+          :id db-done
+          :milestone 数据库迁移完成
+          :date 2026-03-06
+          :after [@db-migrate]
+        }
+      ]
+    }
+    {
+      :id application
+      :task 应用迁移
+      // 拆分前的粗排期保留为 inactive，实际区间由下方步骤 rollup
+      :start 2026-03-09
+      :end 2026-03-28
+      :deadline 2026-03-31
+      :after [@database]
+      :items [
+        {
+          :id app-config
+          :task 配置改造
+          :start 2026-03-09
+          :end 2026-03-13
+          :after [@db-done]
+        }
+        {
+          :id app-build
+          :task 构建与镜像
+          :start 2026-03-16
+          :end 2026-03-18
+          :after [@app-config]
+        }
+        {
+          :id app-canary
+          :task 灰度发布
+          :start 2026-03-19
+          :end 2026-03-23
+          :after [@app-build]
+        }
+        {
+          :id app-rollout
+          :task 全量发布
+          :start 2026-03-24
+          :end 2026-03-27
+          :deadline 2026-03-31
+          :after [@app-canary]
+        }
+        {
+          :id app-done
+          :milestone 应用迁移完成
+          :date 2026-03-27
+          :after [@app-rollout]
+        }
+      ]
+    }
+    {
+      :id network
+      :task 网络切换
+      :items [
+        {
+          :id net-plan
+          :task 切换方案
+          :start 2026-03-09
+          :end 2026-03-11
+          :after [@discovery-done]
+        }
+        {
+          :id net-firewall
+          :task 防火墙调整
+          :start 2026-03-12
+          :end 2026-03-13
+          :after [@net-plan]
+        }
+        {
+          :id net-cutover
+          :task 执行切换
+          :start 2026-03-30
+          :end 2026-03-31
+          :after [@net-firewall @app-done]
+        }
+        {
+          :id net-done
+          :milestone 网络切换完成
+          :date 2026-03-31
+          :after [@net-cutover]
+        }
+      ]
+    }
+    {
+      :id acceptance
+      :task 统一验收
+      :items [
+        {
+          :id smoke-test
+          :task 冒烟测试
+          :start 2026-04-01
+          :end 2026-04-02
+          :after [@db-done @app-done @net-done]
+        }
+        {
+          :id perf-test
+          :task 性能回归
+          :start 2026-04-03
+          :end 2026-04-07
+          :after [@smoke-test]
+        }
+        {
+          :id signoff
+          :task 负责人签署
+          :deadline 2026-04-10
+          :after [@perf-test]
+        }
+        {
+          :id project-done
+          :milestone 项目验收完成
+          :date 2026-04-10
+          :after [@signoff]
+        }
+      ]
+    }
+    // 后续优化，尚未排期
+    {
+      :id followups
+      :task 遗留优化
+      :items [
+        {
+          :id cost-review
+          :task 成本复盘
+          :after [@project-done]
+        }
+        {
+          :id doc-update
+          :task 文档更新
+        }
+        {
+          :id tooling-cleanup
+          :task 工具链清理
+        }
+        {
+          :id followups-done
+          :milestone 优化收尾
+          :after [@cost-review @doc-update]
+        }
+      ]
+    }
+  ]
+}

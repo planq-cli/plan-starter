@@ -2,6 +2,7 @@
   "manifestVersion": "1",
   "entries": [
     "starter.plan",
-    "crm-demo.plan"
+    "crm-demo.plan",
+    "infra-migration.plan"
   ]
 }

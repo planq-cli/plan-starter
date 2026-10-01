@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1",
+  "treeSha256": "0c98b33c009dcc177fb76f67ca799a78067d787a98030af8529eb549d2be5e7a",
+  "files": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "sha256": "89d47003972a689bd3ad159bbe4d9c18ed676853b82a803832853437e7d33d37"
+    },
+    {
+      "path": "crm-demo.plan",
+      "mode": "100644",
+      "sha256": "d2ff12b4176e3318d31a54f12fc2a6c7104e52d0efdd13cbc87fc0dae6aa5155"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "sha256": "9542cc2a5b622894ac9e73e0e533c6fef7b1ec57460b8bd16ad200a4e233d1d9"
+    },
+    {
+      "path": "plan.manifest.json",
+      "mode": "100644",
+      "sha256": "edd226014e46cc45994c85ee1de56b9f504e0a31ba95816240a9c62a6157f629"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "sha256": "c7eba9a2959b4b252749a45d90fecc8ce75237a746a101dd25af8f34cd683756"
+    },
+    {
+      "path": "resources.plan",
+      "mode": "100644",
+      "sha256": "a4d99dfa65ccb590c2f2faff2285be0e59a1fc4540446c39276734adf6e4c811"
+    },
+    {
+      "path": "starter.plan",
+      "mode": "100644",
+      "sha256": "b8e2b9ad4bdb3eeaf88727d27a922f4164497bc8dbc2e063db79448134214c85"
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  :id crm-dev
+  :version 1.0
+  :title CRM
+  :description `
+    Build a CRM system with accounts and contacts, lead management, opportunity pipelines,
+    activity tracking, reports and dashboards, roles and permissions, and data integrations.
+    Team: 2 frontend engineers, 1 backend engineer, 1 QA engineer, and 1 product manager.
+  `
+  :items [
+    {
+      :id phase-0-requirements
+      :task "Requirements and design"
+      :items [
+        {
+          :id prd-review
+          :task "Draft and review the PRD"
+          :start 2026-09-07
+          :end 2026-09-08
+          :to [@pm-1]
+        }
+        {
+          :id wireframes
+          :task "UX prototypes and wireframes"
+          :start 2026-09-09
+          :end 2026-09-11
+          :after [@prd-review]
+          :to [@pm-1]
+        }
+        {
+          :id tech-design
+          :task "Backend architecture and technical design"
+          :start 2026-09-07
+          :end 2026-09-10
+          :to [@be-1]
+        }
+        {
+          :id api-contract
+          :task "API contracts and documentation"
+          :start 2026-09-11
+          :end 2026-09-14
+          :after [@tech-design]
+          :to [@be-1]
+        }
+        {
+          :id fe-toolchain
+          :task "Frontend scaffolding and engineering conventions"
+          :start 2026-09-07
+          :end 2026-09-11
+          :to [@person-1]
+        }
+        {
+          :id test-plan
+          :task "Test planning and case design"
+          :start 2026-09-15
+          :end 2026-09-16
+          :after [@api-contract]
+          :to [@qa-1]
+        }
+      ]
+    }
+    {
+      :id phase-1-platform
+      :task "Platform and infrastructure"
+      :items [
+        {
+          :id be-api-base
+          :task "Backend foundation and API gateway"
+          :start 2026-09-15
+          :end 2026-09-18
+          :after [@tech-design]
+          :to [@be-1]
+        }
+        {
+          :id be-db
+          :task "Database schema and migrations"
+          :start 2026-09-21
+          :end 2026-09-24
+          :after [@be-api-base]
+          :to [@be-1]
+        }
+        {
+          :id be-auth
+          :task "Authentication and authorization middleware"
+          :start 2026-09-25
+          :end 2026-09-30
+          :after [@be-db]
+          :to [@be-1]
+        }
+        {
+          :id fe-shell
+          :task "Frontend application shell, layout, and routing"
+          :start 2026-09-14
+          :end 2026-09-18
+          :after [@fe-toolchain]
+          :to [@person-1]
+        }
+        {
+          :id fe-auth-ui
+          :task "Login and authorization route guards"
+          :start 2026-09-21
+          :end 2026-09-25
+          :after [@fe-shell @api-contract]
+          :to [@fe-2]
+        }
+        {
+          :id qa-auth
+          :task "Authentication and authorization testing"
+          :start 2026-10-01
+          :end 2026-10-05
+          :after [@be-auth @fe-auth-ui]
+          :to [@qa-1]
+        }
+      ]
+    }
+    {
+      :id phase-2-crm-core
+      :task "Core CRM modules"
+      :items [
+        {
+          :id mod-accounts
+          :task "Accounts and contacts"
+          :items [
+            {
+              :id be-accounts-api
+              :task "Accounts and contacts CRUD API"
+              :start 2026-10-05
+              :end 2026-10-08
+              :after [@be-api-base]
+              :to [@be-1]
+            }
+            {
+              :id fe-accounts-ui
+              :task "Accounts and contacts list and details"
+              :start 2026-09-21
+              :end 2026-09-25
+              :after [@fe-shell @api-contract]
+              :to [@person-1]
+            }
+            {
+              :id qa-accounts
+              :task "Accounts and contacts testing"
+              :start 2026-10-09
+              :end 2026-10-12
+              :after [@be-accounts-api @fe-accounts-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+        {
+          :id mod-leads
+          :task "Lead management"
+          :items [
+            {
+              :id be-leads-api
+              :task "Lead management API"
+              :start 2026-10-09
+              :end 2026-10-14
+              :after [@be-accounts-api]
+              :to [@be-1]
+            }
+            {
+              :id fe-leads-ui
+              :task "Lead list and conversion form"
+              :start 2026-09-28
+              :end 2026-10-02
+              :after [@fe-shell @api-contract]
+              :to [@fe-2]
+            }
+            {
+              :id qa-leads
+              :task "Lead management testing"
+              :start 2026-10-15
+              :end 2026-10-19
+              :after [@be-leads-api @fe-leads-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+        {
+          :id mod-opps
+          :task "Opportunities and sales pipeline"
+          :items [
+            {
+              :id be-opps-api
+              :task "Opportunities and sales pipeline API"
+              :start 2026-10-15
+              :end 2026-10-20
+              :after [@be-leads-api]
+              :to [@be-1]
+            }
+            {
+              :id fe-opps-ui
+              :task "Pipeline board and opportunity details"
+              :start 2026-10-05
+              :end 2026-10-09
+              :after [@fe-shell @api-contract]
+              :to [@fe-2]
+            }
+            {
+              :id qa-opps
+              :task "Opportunity module testing"
+              :start 2026-10-23
+              :end 2026-10-26
+              :after [@be-opps-api @fe-opps-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+        {
+          :id mod-acts
+          :task "Activities and follow-ups"
+          :items [
+            {
+              :id be-acts-api
+              :task "Activities and tasks API"
+              :start 2026-10-21
+              :end 2026-10-26
+              :after [@be-opps-api]
+              :to [@be-1]
+            }
+            {
+              :id fe-acts-ui
+              :task "Follow-up history and to-dos"
+              :start 2026-10-05
+              :end 2026-10-09
+              :after [@fe-shell @api-contract]
+              :to [@person-1]
+            }
+            {
+              :id qa-acts
+              :task "Activity tracking testing"
+              :start 2026-10-27
+              :end 2026-10-29
+              :after [@be-acts-api @fe-acts-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+        {
+          :id mod-reports
+          :task "Reports and dashboards"
+          :items [
+            {
+              :id be-reports-api
+              :task "Reporting aggregation API"
+              :start 2026-10-27
+              :end 2026-10-30
+              :after [@be-acts-api]
+              :to [@be-1]
+            }
+            {
+              :id fe-reports-ui
+              :task "Dashboard and charts"
+              :start 2026-09-28
+              :end 2026-10-02
+              :after [@fe-shell @api-contract]
+              :to [@person-1]
+            }
+            {
+              :id qa-reports
+              :task "Reporting tests"
+              :start 2026-11-02
+              :end 2026-11-04
+              :after [@be-reports-api @fe-reports-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+        {
+          :id mod-rbac
+          :task "Roles and permissions"
+          :items [
+            {
+              :id be-rbac-api
+              :task "Roles and permissions API"
+              :start 2026-10-01
+              :end 2026-10-02
+              :after [@be-auth]
+              :to [@be-1]
+            }
+            {
+              :id fe-rbac-ui
+              :task "Role and permission management"
+              :start 2026-10-12
+              :end 2026-10-16
+              :after [@fe-shell @api-contract]
+              :to [@fe-2]
+            }
+            {
+              :id qa-rbac
+              :task "Authorization testing"
+              :start 2026-10-20
+              :end 2026-10-22
+              :after [@be-rbac-api @fe-rbac-ui]
+              :to [@qa-1]
+            }
+          ]
+        }
+      ]
+    }
+    {
+      :id phase-3-integration
+      :task "Integrations and data"
+      :items [
+        {
+          :id be-import-export
+          :task "Import and export"
+          :start 2026-11-02
+          :end 2026-11-05
+          :after [@be-reports-api]
+          :to [@be-1]
+        }
+        {
+          :id fe-import-export
+          :task "Import and export UI"
+          :start 2026-10-12
+          :end 2026-10-16
+          :after [@fe-shell @api-contract]
+          :to [@person-1]
+        }
+        {
+          :id be-notify
+          :task "Notifications and reminders"
+          :start 2026-11-10
+          :end 2026-11-11
+          :after [@be-acts-api]
+          :to [@be-1]
+        }
+        {
+          :id fe-notify-ui
+          :task "In-app notifications UI"
+          :start 2026-10-19
+          :end 2026-10-23
+          :after [@fe-shell @api-contract]
+          :to [@fe-2]
+        }
+        {
+          :id be-search
+          :task "Global search"
+          :start 2026-11-06
+          :end 2026-11-09
+          :after [@be-import-export]
+          :to [@be-1]
+        }
+        {
+          :id fe-search-ui
+          :task "Search UI"
+          :start 2026-10-26
+          :end 2026-10-30
+          :after [@fe-shell @api-contract]
+          :to [@fe-2]
+        }
+        {
+          :id qa-integration
+          :task "Integration and end-to-end testing"
+          :start 2026-11-12
+          :end 2026-11-13
+          :after [
+            @be-search
+            @fe-search-ui
+            @fe-notify-ui
+            @be-notify
+            @be-import-export
+            @fe-import-export
+          ]
+          :to [@qa-1]
+        }
+      ]
+    }
+    {
+      :id phase-4-release
+      :task "Final testing and release"
+      :items [
+        {
+          :id regression
+          :task "Full regression testing"
+          :start 2026-11-16
+          :end 2026-11-18
+          :after [@qa-integration]
+          :to [@qa-1]
+        }
+        {
+          :id perf
+          :task "Performance and security testing"
+          :start 2026-11-19
+          :end 2026-11-20
+          :after [@regression]
+          :to [
+            {
+              :person @qa-1
+              :load 0.5
+            }
+            {
+              :person @be-1
+              :load 0.5
+            }
+          ]
+        }
+        {
+          :id uat
+          :task "User acceptance testing"
+          :start 2026-11-23
+          :end 2026-11-25
+          :after [@perf]
+          :to [
+            {
+              :person @pm-1
+              :load 0.5
+            }
+            {
+              :person @qa-1
+              :load 0.5
+            }
+          ]
+        }
+        {
+          :id bugfix
+          :task "Defect fixes and regression testing"
+          :start 2026-11-26
+          :end 2026-11-30
+          :after [@uat]
+          :to [
+            {
+              :person @be-1
+              :load 0.5
+            }
+            {
+              :person @person-1
+              :load 0.5
+            }
+            {
+              :person @fe-2
+              :load 0.5
+            }
+          ]
+        }
+        {
+          :id release
+          :task "Production release and monitoring"
+          :start 2026-12-01
+          :end 2026-12-01
+          :after [@bugfix]
+          :to [@be-1]
+        }
+      ]
+    }
+  ]
+}

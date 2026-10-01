@@ -1,0 +1,37 @@
+{
+  :id product-launch
+  :version 1.0
+  :title "Product launch"
+  :description "A small PlanQ project ready to adapt."
+  :items [
+    {
+      :id define-scope
+      :task "Define launch scope"
+      :start 2026-10-05
+      :end 2026-10-06
+      :to [@starter-lead]
+    }
+    {
+      :id build-release
+      :task "Build the release"
+      :start 2026-10-07
+      :end 2026-10-09
+      :after [@define-scope]
+      :to [@starter-builder]
+    }
+    {
+      :id verify-release
+      :task "Verify the release"
+      :start 2026-10-12
+      :end 2026-10-13
+      :after [@build-release]
+      :to [@starter-lead @starter-builder]
+    }
+    {
+      :id launch-ready
+      :milestone "Launch ready"
+      :date 2026-10-13
+      :after [@verify-release]
+    }
+  ]
+}

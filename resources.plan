@@ -1,0 +1,40 @@
+{
+  :version 1.0
+  :people [
+    {
+      :id starter-lead
+      :name "Project Lead"
+      :role project-lead
+    }
+    {
+      :id starter-builder
+      :name "Delivery Engineer"
+      :role engineer
+    }
+    {
+      :id person-1
+      :name "Frontend Engineer A"
+      :role frontend
+    }
+    {
+      :id fe-2
+      :name "Frontend Engineer B"
+      :role frontend
+    }
+    {
+      :id be-1
+      :name "Backend Engineer"
+      :role backend
+    }
+    {
+      :id qa-1
+      :name "QA Engineer"
+      :role qa
+    }
+    {
+      :id pm-1
+      :name "Product Manager"
+      :role pm
+    }
+  ]
+}

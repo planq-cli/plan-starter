@@ -7,7 +7,18 @@ one project resource catalog.
 ## Get started
 
 Install the supported `planq` CLI for your platform by following the
-[installation guide](https://planq.dev/docs/install).
+[installation guide](https://planq.dev/docs/install), then confirm the install
+before you continue:
+
+```bash
+planq version
+```
+
+`planq version` must succeed and must not report an older release than the
+installation guide currently lists. The preview loads a workbench from
+`planq.dev`; if that site is older than your `planq`, the CLI prints a notice and
+falls back to the workbench bundled with your binary — the preview still works,
+but upgrade `planq` to get the published experience.
 
 Create a repository from this template in GitHub, or clone it directly:
 
